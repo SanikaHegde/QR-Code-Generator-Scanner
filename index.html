@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>QR Code Generator & Scanner</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      color: #fff;
+      background: linear-gradient(-45deg, #ff512f, #dd2476, #24c6dc, #514a9d);
+      background-size: 400% 400%;
+      animation: gradientBG 12s ease infinite;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
+    }
+
+    @keyframes gradientBG {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    h1 {
+      font-family: 'Orbitron', sans-serif;
+      margin: 30px 0 10px;
+      font-size: 36px;
+      text-shadow: 0 0 12px rgba(0,0,0,0.5);
+      letter-spacing: 2px;
+    }
+
+    .container {
+      max-width: 1100px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      width: 90%;
+      margin: 20px auto;
+    }
+
+    .card {
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(12px);
+      border-radius: 20px;
+      padding: 30px;
+      text-align: center;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-10px) scale(1.03);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+    }
+
+    h2 {
+      margin-bottom: 15px;
+      font-size: 22px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: #ffe;
+    }
+
+    input[type="text"] {
+      width: 80%;
+      padding: 12px;
+      border: none;
+      border-radius: 10px;
+      margin-bottom: 15px;
+      font-size: 16px;
+      outline: none;
+      background: rgba(255,255,255,0.2);
+      color: #fff;
+    }
+
+    button {
+      padding: 12px 20px;
+      background: linear-gradient(45deg, #ff512f, #dd2476);
+      border: none;
+      border-radius: 10px;
+      color: #fff;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: transform 0.2s ease, box-shadow 0.3s ease;
+      margin: 5px;
+    }
+
+    button:hover {
+      transform: scale(1.05);
+      box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    }
+
+    #qrCode {
+      margin-top: 20px;
+    }
+
+    #reader {
+      margin: auto;
+      width: 100%;
+      max-width: 320px;
+      border-radius: 15px;
+      overflow: hidden;
+      box-shadow: 0 0 20px rgba(255,255,255,0.4);
+    }
+
+    #scanResult {
+      margin-top: 15px;
+      font-weight: bold;
+      color: #fff;
+      background: rgba(0,0,0,0.4);
+      padding: 10px;
+      border-radius: 8px;
+      display: inline-block;
+    }
+
+    footer {
+      margin-top: auto;
+      padding: 15px;
+      background: rgba(0,0,0,0.4);
+      width: 100%;
+      text-align: center;
+      color: #eee;
+      font-size: 14px;
+      letter-spacing: 1px;
+    }
+  </style>
+</head>
+<body>
+  <h1>🚀 QR Code Generator & Scanner</h1>
+
+  <div class="container">
+    <!-- Generator -->
+    <div class="card">
+      <h2>Generate QR Code</h2>
+      <input type="text" id="qrText" placeholder="Enter text or URL">
+      <br>
+      <button onclick="generateQR()">⚡ Generate</button>
+      <div id="qrCode"></div>
+    </div>
+
+    <!-- Scanner -->
+    <div class="card">
+      <h2>Scan QR Code</h2>
+      <div id="reader"></div>
+      <p id="scanResult"></p>
+      <br>
+      <input type="file" id="fileInput" accept="image/*" onchange="scanFromFile(event)">
+      <br>
+      <small>📂 Or upload a QR image from gallery</small>
+    </div>
+  </div>
+
+  <footer>
+    Made with ❤️ Stylish Tech | Sanika
+  </footer>
+
+  <!-- Libraries -->
+  <script src="https://cdn.jsdelivr.net/npm/qrcodejs@1.0.0/qrcode.min.js"></script>
+  <script src="https://unpkg.com/html5-qrcode"></script>
+
+  <!-- Script -->
+  <script>
+    // QR Generator
+    function generateQR() {
+      let qrText = document.getElementById("qrText").value;
+      let qrContainer = document.getElementById("qrCode");
+      qrContainer.innerHTML = ""; // clear old QR
+
+      if (qrText.trim() === "") {
+        alert("Please enter text or URL");
+        return;
+      }
+
+      new QRCode(qrContainer, {
+        text: qrText,
+        width: 200,
+        height: 200,
+      });
+    }
+
+    // QR Scanner (camera)
+    function startScanner() {
+      let scanner = new Html5Qrcode("reader");
+      scanner.start(
+        { facingMode: "environment" },
+        { fps: 10, qrbox: 250 },
+        qrCodeMessage => {
+          document.getElementById("scanResult").innerText = "✅ Scanned: " + qrCodeMessage;
+          scanner.stop();
+        },
+        errorMessage => {}
+      ).catch(err => {
+        console.error("Camera error:", err);
+      });
+    }
+
+    // QR Scanner (file upload)
+    function scanFromFile(event) {
+      const file = event.target.files[0];
+      if (!file) return;
+
+      const scanner = new Html5Qrcode("reader");
+      scanner.scanFile(file, true)
+        .then(decodedText => {
+          document.getElementById("scanResult").innerText = "✅ Scanned from file: " + decodedText;
+        })
+        .catch(err => {
+          document.getElementById("scanResult").innerText = "❌ Failed to scan file";
+          console.error("Scan error:", err);
+        });
+    }
+
+    window.onload = () => {
+      startScanner();
+    };
+  </script>
+</body>
+</html>
