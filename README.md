@@ -18,24 +18,20 @@ Upload & Scan QR code images from the gallery.
 Clean & Responsive UI with modern design.
 
 ---
- Tech Stack
-
+Tech Stack
+--
 Frontend: HTML, CSS, JavaScript
-
 Libraries Used:
-
 QRCode.js
  (for QR generation)
-
 html5-qrcode
  (for QR scanning)
 
  ---
 📸Results
 ---
-Generator
-
-Scanner
+Generator and Scanner
+![image alt](https://github.com/SanikaHegde/Fursteps-pet-wellness-tracker/blob/d3bcfb4f8f88747e3156253eac685963f2af0227/Screenshot%202024-12-27%20221940.png )
 
 ---
 📌 Future Enhancements
@@ -45,5 +41,6 @@ Add option to download generated QR code as PNG.
 Dark mode support 🌙.
 
 Mobile app version (using React Native / Flutter).
+
 
 
