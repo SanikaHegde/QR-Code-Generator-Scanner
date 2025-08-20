@@ -1,5 +1,4 @@
-#📱 QR Code Generator & Scanner
-
+📱 QR Code Generator & Scanner
 ---
 A simple and stylish QR Code Generator and Scanner built with HTML, CSS, and JavaScript.
 It allows users to:
@@ -8,8 +7,8 @@ It allows users to:
 ✅ Upload images from the gallery to scan
 
 ---
-#🚀 Features
-
+🚀 Features
+---
 Generate QR Code instantly from any text or link.
 
 Live Camera QR Scanner using your device camera.
@@ -19,7 +18,7 @@ Upload & Scan QR code images from the gallery.
 Clean & Responsive UI with modern design.
 
 ---
-# Tech Stack
+ Tech Stack
 
 Frontend: HTML, CSS, JavaScript
 
@@ -32,19 +31,19 @@ html5-qrcode
  (for QR scanning)
 
  ---
-
-
-#📸Results
+📸Results
+---
 Generator
 
 Scanner
 
 ---
-#📌 Future Enhancements
-
+📌 Future Enhancements
+--
 Add option to download generated QR code as PNG.
 
 Dark mode support 🌙.
 
 Mobile app version (using React Native / Flutter).
+
 
