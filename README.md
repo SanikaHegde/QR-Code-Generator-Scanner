@@ -31,7 +31,8 @@ html5-qrcode
 📸Results
 ---
 Generator and Scanner
-![image alt](https://github.com/SanikaHegde/QR-Code-Generator-Scanner/blob/a9d1014e259e8829f36c6f9204e1f9cb590d2da5/Screenshot%202025-08-20%20150648.png)
+
+![image alt](https://github.com/SanikaHegde/QR-Code-Generator-Scanner/blob/10ef9265857f2ce0581eb2c93f2bebf76c4f419a/Screenshot%202025-08-20%20150847.png)
 
 ---
 📌 Future Enhancements
@@ -41,6 +42,7 @@ Add option to download generated QR code as PNG.
 Dark mode support 🌙.
 
 Mobile app version (using React Native / Flutter).
+
 
 
 
