@@ -11,7 +11,7 @@ It allows users to:
 
 You can view the live hosted version of this project here:
 
-👉 **[https://sanikahegde.github.io/QR-Code-Generator-Scanner-Website]/**
+👉[ **[https://sanikahegde.github.io/QR-Code-Generator-Scanner-Website]/**](https://sanikahegde.github.io/QR-Code-Generator-Scanner/)
 
 ---
 🚀 Features
@@ -49,6 +49,7 @@ Add option to download generated QR code as PNG.
 Dark mode support 🌙.
 
 Mobile app version (using React Native / Flutter).
+
 
 
 
