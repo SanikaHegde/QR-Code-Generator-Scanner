@@ -7,6 +7,13 @@ It allows users to:
 ✅ Upload images from the gallery to scan
 
 ---
+## 🚀 Live Demo
+
+You can view the live hosted version of this project here:
+
+👉 **https://sanikahegde.github.io/Recipe-Sharing-Website/**
+
+---
 🚀 Features
 ---
 Generate QR Code instantly from any text or link.
@@ -42,6 +49,7 @@ Add option to download generated QR code as PNG.
 Dark mode support 🌙.
 
 Mobile app version (using React Native / Flutter).
+
 
 
 
